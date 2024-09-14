@@ -1,0 +1,23 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-29 03:55 UTC
+Nmap scan report for wpscan.com (192.0.78.25)
+Host is up (0.14s latency).
+Other addresses for wpscan.com (not scanned): 64:ff9b::c000:4e19 64:ff9b::c000:4e18 192.0.78.24
+Not shown: 998 filtered tcp ports (no-response)
+PORT    STATE SERVICE  VERSION
+80/tcp  open  http     nginx
+|_http-title: Did not follow redirect to https://wpscan.com/
+443/tcp open  ssl/http nginx
+| http-robots.txt: 10 disallowed entries 
+| /wp-admin/ /wp-login.php /wp-signup.php 
+| /press-this.php /remote-login.php /activate/ /cgi-bin/ /mshots/v1/ 
+|_/next/ /public.api/
+|_http-title: WPScan: WordPress Security Scanner
+|_ssl-date: TLS randomness does not represent time
+|_http-generator: WordPress.com
+| ssl-cert: Subject: commonName=tls.automattic.com
+| Subject Alternative Name: DNS:tls.automattic.com, DNS:wpscan.com, DNS:www.wpscan.com
+| Not valid before: 2024-03-11T17:52:15
+|_Not valid after:  2024-06-09T17:52:14
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 52.91 seconds

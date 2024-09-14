@@ -1,0 +1,208 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.25",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "start_time": 1711684558,
+  "start_memory": 65662976,
+  "target_url": "https://wpscan.com/",
+  "target_ip": "64:ff9b::c000:4e19",
+  "effective_url": "https://wpscan.com/",
+  "interesting_findings": [
+    {
+      "url": "https://wpscan.com/",
+      "to_s": "Headers",
+      "type": "headers",
+      "found_by": "Headers (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "server: nginx",
+        "x-hacker: Want root?  Visit join.a8c.com/hacker and mention this header.",
+        "host-header: WordPress.com",
+        "x-ac: 3.bom _dca BYPASS",
+        "alt-svc: h3=\":443\"; ma=86400"
+      ]
+    },
+    {
+      "url": "https://wpscan.com/robots.txt",
+      "to_s": "robots.txt found: https://wpscan.com/robots.txt",
+      "type": "robots_txt",
+      "found_by": "Robots Txt (Aggressive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "/wp-admin/",
+        "/wp-admin/admin-ajax.php",
+        "/wp-login.php",
+        "/wp-signup.php",
+        "/press-this.php",
+        "/remote-login.php",
+        "/activate/",
+        "/cgi-bin/",
+        "/mshots/v1/",
+        "/next/",
+        "/public.api/"
+      ]
+    },
+    {
+      "url": "https://wpscan.com/xmlrpc.php",
+      "to_s": "XML-RPC seems to be enabled: https://wpscan.com/xmlrpc.php",
+      "type": "xmlrpc",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/XML-RPC_Pingback_API"
+        ],
+        "metasploit": [
+          "auxiliary/scanner/http/wordpress_ghost_scanner",
+          "auxiliary/dos/http/wordpress_xmlrpc_dos",
+          "auxiliary/scanner/http/wordpress_xmlrpc_login",
+          "auxiliary/scanner/http/wordpress_pingback_access"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://wpscan.com/wp-content/mu-plugins/",
+      "to_s": "This site has 'Must Use Plugins': https://wpscan.com/wp-content/mu-plugins/",
+      "type": "mu_plugins",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 80,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/Must_Use_Plugins"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://wpscan.com/wp-cron.php",
+      "to_s": "The external WP-Cron seems to be enabled: https://wpscan.com/wp-cron.php",
+      "type": "wp_cron",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 60,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "https://www.iplocation.net/defend-wordpress-from-ddos",
+          "https://github.com/wpscanteam/wpscan/issues/1299"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    }
+  ],
+  "version": null,
+  "main_theme": null,
+  "users": {
+    "Jen Swisher": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "Rob Pugh": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "Marc Montpas": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "Alex Sanford": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    }
+  },
+  "vuln_api": {
+    "error": "No WPScan API Token given, as a result vulnerability data has not been output.\nYou can get a free API token with 25 daily requests by registering at https://wpscan.com/register"
+  },
+  "stop_time": 1711685020,
+  "elapsed": 462,
+  "requests_done": 1329,
+  "cached_requests": 7,
+  "data_sent": 370274,
+  "data_sent_humanised": "361.596 KB",
+  "data_received": 23289852,
+  "data_received_humanised": "22.211 MB",
+  "used_memory": 175001600,
+  "used_memory_humanised": "166.895 MB"
+}

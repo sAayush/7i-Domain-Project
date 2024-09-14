@@ -1,0 +1,32 @@
+{
+    "last_updated": "2024-03-29 05:47:54.089008",
+    "results": [
+        {
+            "https://wordpress.org/": {
+                "cms_id": "wp",
+                "date": "2024-03-29 05:12:55.850212",
+                "report": "/home/avtar/Desktop/hh/vapt/Result/wordpress.org/cms.json"
+            },
+            "https://wordpress.com/": {
+                "cms_id": "wp",
+                "date": "2024-03-29 05:25:01.480154",
+                "report": "/home/avtar/Desktop/hh/vapt/Result/wordpress.com/cms.json"
+            },
+            "https://www.ovo.id": {
+                "cms_id": "",
+                "date": "2024-03-29 04:51:40.216685",
+                "report": "/home/avtar/Desktop/hh/vapt/Result/www.ovo.id/cms.json"
+            },
+            "https://wpscan.com/": {
+                "cms_id": "wp",
+                "date": "2024-03-29 03:55:36.995901",
+                "report": "/home/avtar/Desktop/hh/vapt/Result/wpscan.com/cms.json"
+            },
+            "https://stackoverflow.com/": {
+                "cms_id": "",
+                "date": "2024-03-29 03:23:35.113800",
+                "report": "/home/avtar/Desktop/hh/vapt/Result/stackoverflow.com/cms.json"
+            }
+        }
+    ]
+}

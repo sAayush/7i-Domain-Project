@@ -1,0 +1,23 @@
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-29 05:24 UTC
+Nmap scan report for wordpress.com (192.0.78.17)
+Host is up (0.085s latency).
+Other addresses for wordpress.com (not scanned): 64:ff9b::c000:4e09 64:ff9b::c000:4e11 192.0.78.9
+Not shown: 998 filtered tcp ports (no-response)
+PORT    STATE SERVICE  VERSION
+80/tcp  open  http     nginx
+|_http-title: Did not follow redirect to https://wordpress.com/
+443/tcp open  ssl/http nginx
+| ssl-cert: Subject: commonName=*.wordpress.com
+| Subject Alternative Name: DNS:*.wordpress.com, DNS:wordpress.com
+| Not valid before: 2023-12-05T00:00:00
+|_Not valid after:  2025-01-04T23:59:59
+| http-robots.txt: 13 disallowed entries 
+| /wp-admin/ /typo/ /read/ /log-in? /wp-login.php 
+| /wp-signup.php /press-this.php /remote-login.php /activate/ 
+|_/cgi-bin/ /mshots/v1/ /next/ /public.api/
+|_http-generator: WordPress.com
+|_http-title: WordPress.com: Build a Site, Sell Your Stuff, Start a Blog &am...
+|_ssl-date: TLS randomness does not represent time
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 40.60 seconds

@@ -1,0 +1,305 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.25",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "start_time": 1711691289,
+  "start_memory": 65581056,
+  "target_url": "https://wordpress.org/",
+  "target_ip": "64:ff9b::c68f:a4fc",
+  "effective_url": "https://wordpress.org/",
+  "interesting_findings": [
+    {
+      "url": "https://wordpress.org/",
+      "to_s": "Headers",
+      "type": "headers",
+      "found_by": "Headers (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "server: nginx",
+        "x-olaf: ⛄",
+        "alt-svc: h3=\":443\"; ma=86400",
+        "x-nc: HIT ord 2"
+      ]
+    },
+    {
+      "url": "https://wordpress.org/robots.txt",
+      "to_s": "robots.txt found: https://wordpress.org/robots.txt",
+      "type": "robots_txt",
+      "found_by": "Robots Txt (Aggressive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "/wp-admin/",
+        "/wp-admin/admin-ajax.php",
+        "/wp-admin/load-scripts.php",
+        "/wp-admin/load-styles.php",
+        "/search",
+        "/?s=",
+        "/plugins/search/"
+      ]
+    },
+    {
+      "url": "https://wordpress.org/xmlrpc.php",
+      "to_s": "XML-RPC seems to be enabled: https://wordpress.org/xmlrpc.php",
+      "type": "xmlrpc",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/XML-RPC_Pingback_API"
+        ],
+        "metasploit": [
+          "auxiliary/scanner/http/wordpress_ghost_scanner",
+          "auxiliary/dos/http/wordpress_xmlrpc_dos",
+          "auxiliary/scanner/http/wordpress_xmlrpc_login",
+          "auxiliary/scanner/http/wordpress_pingback_access"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://wordpress.org/wp-content/mu-plugins/",
+      "to_s": "This site has 'Must Use Plugins': https://wordpress.org/wp-content/mu-plugins/",
+      "type": "mu_plugins",
+      "found_by": "URLs In Homepage (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+        "Direct Access (Aggressive Detection)": {
+          "confidence": 80
+        }
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/Must_Use_Plugins"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    },
+    {
+      "url": "https://wordpress.org/wp-cron.php",
+      "to_s": "The external WP-Cron seems to be enabled: https://wordpress.org/wp-cron.php",
+      "type": "wp_cron",
+      "found_by": "Direct Access (Aggressive Detection)",
+      "confidence": 60,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "https://www.iplocation.net/defend-wordpress-from-ddos",
+          "https://github.com/wpscanteam/wpscan/issues/1299"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    }
+  ],
+  "version": null,
+  "main_theme": {
+    "slug": "wporg-parent-2021",
+    "location": "https://wordpress.org/wp-content/themes/wporg-parent-2021/",
+    "latest_version": null,
+    "last_updated": null,
+    "outdated": false,
+    "readme_url": false,
+    "directory_listing": false,
+    "error_log_url": null,
+    "style_url": "https://wordpress.org/wp-content/themes/wporg-parent-2021/style.css",
+    "style_name": "WordPress.org Parent Theme, 2021 edition",
+    "style_uri": "https://github.com/WordPress/wporg-parent-2021",
+    "description": "The WordPress.org Parent Theme is a foundation for themes used on sites in the WordPress.org ecosystem.",
+    "author": "WordPress.org",
+    "author_uri": "https://wordpress.org/",
+    "template": null,
+    "license": "GNU General Public License v2 or later",
+    "license_uri": null,
+    "tags": null,
+    "text_domain": "wporg",
+    "found_by": "Urls In Homepage (Passive Detection)",
+    "confidence": 8,
+    "interesting_entries": [
+
+    ],
+    "confirmed_by": {
+      "Urls In 404 Page (Passive Detection)": {
+        "confidence": 4,
+        "interesting_entries": [
+
+        ]
+      }
+    },
+    "vulnerabilities": [
+
+    ],
+    "version": {
+      "number": "1.0.0-624ac76",
+      "confidence": 80,
+      "found_by": "Style (Passive Detection)",
+      "interesting_entries": [
+        "https://wordpress.org/wp-content/themes/wporg-parent-2021/style.css, Match: 'Version: 1.0.0-624ac76'"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "parents": [
+
+    ]
+  },
+  "users": {
+    "Lauren Stein": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "Brett McSherry": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "Dan Soschin": {
+      "id": null,
+      "found_by": "Rss Generator (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Rss Generator (Aggressive Detection)": {
+          "confidence": 50,
+          "interesting_entries": [
+
+          ]
+        }
+      }
+    },
+    "adamwood": {
+      "id": 8213290,
+      "found_by": "Wp Json Api (Aggressive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/wp/v2/users/?per_page=100&page=1"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "ryelle": {
+      "id": 1819835,
+      "found_by": "Wp Json Api (Aggressive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/wp/v2/users/?per_page=100&page=1"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "laurlittle": {
+      "id": 20287095,
+      "found_by": "Wp Json Api (Aggressive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/wp/v2/users/?per_page=100&page=1"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "poliuk": {
+      "id": 14607410,
+      "found_by": "Wp Json Api (Aggressive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/wp/v2/users/?per_page=100&page=1"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "wordpressdotorg": {
+      "id": 5911429,
+      "found_by": "Wp Json Api (Aggressive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/wp/v2/users/?per_page=100&page=1"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "WordPress.org": {
+      "id": null,
+      "found_by": "Oembed API - Author Name (Aggressive Detection)",
+      "confidence": 70,
+      "interesting_entries": [
+        "https://wordpress.org/wp-json/oembed/1.0/embed?url=https://wordpress.org/&format=json"
+      ],
+      "confirmed_by": {
+
+      }
+    }
+  },
+  "vuln_api": {
+    "error": "No WPScan API Token given, as a result vulnerability data has not been output.\nYou can get a free API token with 25 daily requests by registering at https://wpscan.com/register"
+  },
+  "stop_time": 1711691744,
+  "elapsed": 454,
+  "requests_done": 1340,
+  "cached_requests": 10,
+  "data_sent": 411498,
+  "data_sent_humanised": "401.854 KB",
+  "data_received": 32177785,
+  "data_received_humanised": "30.687 MB",
+  "used_memory": 226664448,
+  "used_memory_humanised": "216.164 MB"
+}
