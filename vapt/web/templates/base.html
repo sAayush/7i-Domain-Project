@@ -30,8 +30,8 @@
 					<span class="bar"></span>
 				</button>
 			</div>
-			<!-- BEGIN desktop-toggler -->
-			
+			<!-- END desktop-toggler -->
+             
 			<!-- BEGIN mobile-toggler -->
 			<div class="mobile-toggler">
 				<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
@@ -45,9 +45,11 @@
 			<!-- BEGIN brand -->
 			<div class="brand">
 				<a href="#" class="brand-logo">
+                    <!-- Logo text -->
 					<span class="brand-img">
-						<span class="brand-img-text text-theme">H</span>
+                        <span class="brand-img-text text-theme">H</span>
 					</span>
+                    <!-- Logo text end-->
 					<span class="brand-text"></span>
 				</a>
 			</div>
@@ -56,43 +58,41 @@
 			<!-- BEGIN menu -->
 			<div class="menu">
 				<div class="menu-item dropdown dropdown-mobile-full">
-					
 					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
-						<div class="menu-text d-lg-block d-none w-170px"><h6>Name:-{{user.username}}</h6></div>
-						<div class="menu-img online">
-							
-							<div class="d-flex align-items-center justify-content-center w-100 h-100 bg-inverse bg-opacity-25 text-inverse text-opacity-50 rounded-circle overflow-hidden">
-								<i class="bi bi-person-fill fs-32px mb-n3"></i>
-							</div>
-						</div>
-						
-						
-					</a>
-					
+						<div class="menu-text d-lg-block d-none w-170px">
+                            <h6>Name:-{{user.username}}</h6>
+                        </div>
+                        <div class="menu-img online">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100 bg-inverse bg-opacity-25 text-inverse text-opacity-50 rounded-circle overflow-hidden">
+                                <i class="bi bi-person-fill fs-32px mb-n3"></i>
+                            </div>
+                        </div>
+                    </a>
 					<div class="dropdown-menu dropdown-menu-end me-sm-3 fs-11px mt-1">
-						<a class="dropdown-item d-flex align-items-center" href="{% url 'logout'%}">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
-						<div class="dropdown-divider"></div>
-						
-					</div>
-				</div>
-			</div>
-			<!-- END menu -->
-			
-			<!-- BEGIN menu-search -->
-			<form class="menu-search" method="POST" name="header_search_form">
-				<div class="menu-search-container">
-					<div class="menu-search-icon"><i class="bi bi-search"></i></div>
-					<div class="menu-search-input">
-						<input type="text" class="form-control form-control-lg" placeholder="Search menu...">
-					</div>
-					<div class="menu-search-icon">
-						<a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
-					</div>
-				</div>
-			</form>
-			<!-- END menu-search -->
-		</div>
-		<!-- END #header -->
+                        <a class="dropdown-item d-flex align-items-center" href="{% url 'logout'%}">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+                        <div class="dropdown-divider">
+                        </div>
+			        </div>
+		        </div>
+            </div>
+            <!-- END menu -->
+            <!-- BEGIN menu-search -->
+            <form class="menu-search" method="POST" name="header_search_form">
+                <div class="menu-search-container">
+                    <div class="menu-search-icon">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <div class="menu-search-input">
+                        <input type="text" class="form-control form-control-lg" placeholder="Search menu...">
+                    </div>
+                    <div class="menu-search-icon">
+                        <a href="#" data-toggle-class="app-header-menu-search-toggled" data-toggle-target=".app"><i class="bi bi-x-lg"></i></a>
+                    </div>
+                </div>
+            </form>
+            <!-- END menu-search -->
+        </div>
+    <!-- END #header -->
 		
 		<!-- BEGIN #sidebar -->
 		<div id="sidebar" class="app-sidebar">
@@ -126,13 +126,16 @@
 		
 		<!-- BEGIN #content -->
 		<div id="content" class="app-content">
-			<ul class="breadcrumb">
+
+            <!-- BEGIN #Breadcrum -->
+			{% comment %} <ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">BREADCRUMB</a></li>
 				<li class="breadcrumb-item active">HOME PAGE</li>
-			</ul>
+			</ul> {% endcomment %}
 			
 			<h1 class="page-header">
-				Starter Page <small></small>
+			<h1 class="page-header">
+				Home Page <small></small>
 			</h1>
             {% block content %}
             {% endblock  %}

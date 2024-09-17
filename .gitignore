@@ -10,6 +10,7 @@ db.sqlite3
 /media/
 .env
 .DS_Store
+/log/
 *.log
 *.pot
 *.py[cod]

@@ -5,7 +5,7 @@
 				<!-- BEGIN row -->
 				<div class="row">
 					<!-- BEGIN col-3 -->
-					<div class="col-xl-8 col-lg-6">
+					<div class="col-xl-10">
 						<!-- BEGIN card -->
 						<div class="card mb-3">
 							<!-- BEGIN card-body -->
@@ -14,47 +14,27 @@
 								<div class="d-flex fw-bold small mb-3">
 									<span class="flex-grow-1">Domin Search</span>
 								</div>
-										<div class="form-input flex-grow-1">
-											<label for="domain">Domain</label>
-											
-											<input type="text" class="form-control form-control-lg" id="domain" name="domain" placeholder="Search domin..." required>
-											
-											{% comment %} <label for="scantype">Scan Type:</label>
-											<select id="scantype" name="scantype" required>
-												<option value="prop">Propagation</option>
-												<option value="iphis">IP History</option>
-												<option value="tracer">Traceroute</option>
-												<option value="revip">Reverse IP</option>
-												<option value="revdns">Reverse DNS</option>
-												<option value="revmx">Reverse MX</option>
-												<option value="revns">Reverse NS</option>
-												<option value="revwhois">Reverse Whois</option>
-											</select> {% endcomment %}
-											<div class="p-3 px-4 mt-auto">
-											<button  type="submit" class="btn d-block btn-outline-theme"  onclick="search()" >Search</button></div>
-										</div>
-									</div>			
+								<div class="form-input flex-grow-1">
 									
-								<div class="card-arrow">
-										<div class="card-arrow-top-left"></div>
-										<div class="card-arrow-top-right"></div>
-										<div class="card-arrow-bottom-left"></div>
-										<div class="card-arrow-bottom-right"></div>
-								</div>
-						</div>
-					</div>
-				</div>
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+									<input type="text" class="form-control form-control-lg" id="domain" name="domain" placeholder="Search domin..." required>
+									
+									{% comment %} <label for="scantype">Scan Type:</label>
+									<select id="scantype" name="scantype" required>
+										<option value="prop">Propagation</option>
+										<option value="iphis">IP History</option>
+										<option value="tracer">Traceroute</option>
+										<option value="revip">Reverse IP</option>
+										<option value="revdns">Reverse DNS</option>
+										<option value="revmx">Reverse MX</option>
+										<option value="revns">Reverse NS</option>
+										<option value="revwhois">Reverse Whois</option>
+									</select> {% endcomment %}
+									
+									<div class="p-3 px-4 mt-auto">
+										<button  type="submit" class="btn d-block btn-outline-theme"  onclick="search()" >Search</button></div>
 									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div class="whois"></div>
-									</div>
-								</div>
+								</div>			
+									
 								<div class="card-arrow">
 									<div class="card-arrow-top-left"></div>
 									<div class="card-arrow-top-right"></div>
@@ -66,7 +46,26 @@
 					</div>
 				</div>
 		
-				
+				<div class="container">
+					<div class="row justify-content-end align-items-center mt-5">
+						<div class="card mb-5">
+							<div class="card-body">
+								<div class="d-flex fw-bold small mb-4">
+									<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+								</div>
+								<div class="small text-inverse text-opacity-50 text-truncate">
+									<div class="whois"></div>
+								</div>
+							</div>
+							<div class="card-arrow">
+								<div class="card-arrow-top-left"></div>
+								<div class="card-arrow-top-right"></div>
+								<div class="card-arrow-bottom-left"></div>
+								<div class="card-arrow-bottom-right"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="container">
 					<div class="row justify-content-end align-items-center mt-5">
 							<div class="card mb-5">

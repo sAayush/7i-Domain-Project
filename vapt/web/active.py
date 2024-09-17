@@ -25,10 +25,12 @@ from .models import wpsinfo,wafinfo,nmapinfo
 import re
 from django.contrib.auth.hashers import make_password
 
+#  For login
 @login_required(login_url='login_user')
 def home(request):
     return render(request,'index.html')
 
+#  For register
 def register(request):
 
     if request.method =='POST':
@@ -72,7 +74,8 @@ def login_user(request):
             return redirect('login_user')
     
     return render(request, "page_login.html")
-
+ 
+# For logout
 @login_required(login_url='login_user')
 def logout_user(request):
     auth.logout(request)
@@ -87,7 +90,8 @@ def logout_user(request):
     messages.success(request, 'You have been logged out successfully!')
     return response
 
-
+# who is lookup
+# it will take domain name as input and return the whois information of the domain
 @login_required(login_url='login_user')
 @csrf_exempt
 @require_POST
@@ -115,6 +119,8 @@ def whois(request):
     else:
         return HttpResponse(json.dumps({'error': 'Not POST'}), content_type='application/json')
 
+# dnsdumpster
+# it will take domain name as input and return the dnsdumpster information of the domain
 @login_required(login_url='login_user')
 @csrf_exempt
 @require_POST
