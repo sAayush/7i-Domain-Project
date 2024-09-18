@@ -1,29 +1,30 @@
-from asgiref.sync import sync_to_async,async_to_sync
+import json
+import re
+
 from django.shortcuts import render ,redirect
+from asgiref.sync import sync_to_async,async_to_sync
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse, HttpResponseRedirect
 
-from django.urls import reverse
-import json
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.urls import reverse
+from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from django.contrib.auth.decorators import login_required
 
 # importing custom libraries
-from .libs.buildwith import buildwith
-from .libs.cmsfind import cmsfind
-from .libs.dnsvie import dnsvie
-from .libs.fuzz import fuzzer
-from .libs.nmap import nmap
 from .libs.waf import waf
+from .libs.nmap import nmap
+from .libs.fuzz import fuzzer
 from .libs.wpscan import wpscan
+from .libs.dnsvie import dnsvie
+from .libs.cmsfind import cmsfind
+from .libs.buildwith import buildwith
+from .models import wpsinfo,wafinfo,nmapinfo
+from django.contrib.auth.hashers import make_password
 from .libs  import whoislookup,dnsdumpster,virustotal,crt,crtidnumberk,sslcheck,cetidd
 from .models import CRTInfo,SSLInfo,CETID_data,crti_Info,whoisInfo,dnsdumpsterInfo,VirusTotalScan,buildwithinfo,cmsscaninfo,fuzzerinfo,dnsviewdata
-from .models import wpsinfo,wafinfo,nmapinfo
-import re
-from django.contrib.auth.hashers import make_password
 
 #  For login
 @login_required(login_url='login_user')
@@ -598,3 +599,7 @@ def search_data(request):
             return render(request, 'data_template.html', {'error_message': error_message})
     else:
         return render(request, 'data_template.html')
+    
+@login_required(login_url='login_user')
+def settings(request):
+    return render(request, 'settings.html')
