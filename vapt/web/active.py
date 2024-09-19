@@ -29,6 +29,7 @@ from .models import CRTInfo,SSLInfo,CETID_data,crti_Info,whoisInfo,dnsdumpsterIn
 #  For login
 @login_required(login_url='login_user')
 def home(request):
+    name = "Home"
     return render(request,'index.html')
 
 #  For register
