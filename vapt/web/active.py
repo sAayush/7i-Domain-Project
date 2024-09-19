@@ -29,8 +29,10 @@ from .models import CRTInfo,SSLInfo,CETID_data,crti_Info,whoisInfo,dnsdumpsterIn
 #  For login
 @login_required(login_url='login_user')
 def home(request):
-    name = "Home"
-    return render(request,'index.html')
+    context = {
+        'page_title': 'Home Page',
+    }
+    return render(request,'index.html', context)
 
 #  For register
 def register(request):
@@ -519,6 +521,9 @@ def pkill(request):
 @login_required(login_url='login_user')
 @csrf_exempt
 def search_data(request):
+    context = {
+        'page_title': 'Search Page',
+    }
     if request.method == 'POST':
     # if request.method == 'GET' and 'date' in request.GET:
     #     date_str = request.GET.get('date')
@@ -599,7 +604,7 @@ def search_data(request):
             error_message = 'Invalid date format. Please use YYYY-MM-DD.'
             return render(request, 'data_template.html', {'error_message': error_message})
     else:
-        return render(request, 'data_template.html')
+        return render(request, 'data_template.html', context)
     
 @login_required(login_url='login_user')
 def settings(request):
