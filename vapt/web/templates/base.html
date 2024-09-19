@@ -35,15 +35,10 @@
 
         <!-- BEGIN brand (Logo) -->
         <div class="brand">
-          <a href="#" class="brand-logo d-flex align-items-center">
-            <span class="brand-img">
-              <img
-                src="{% static 'img/logo/logo.png' %}"
-                alt="logo"
-                style="width: 80px; height: auto" />
-            </span>
-            <span class="arrows-wrap d-none d-lg-inline-flex" style="margin-left: -15px">
-              <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <a href="#" class="brand-logo d-flex align-items-center justify-content-center">
+            <span style="height: 1.625rem;">
+{% comment %} remove class and add inline css {% endcomment %}
+			  <img src="{% static 'img/logo/logo.png' %}" alt="logo" />
             </span>
           </a>
         </div>
@@ -94,7 +89,8 @@
         <div class="menu">
           <div class="menu-item dropdown dropdown-mobile-full">
             <a href="#" data-bs-toggle="dropdown" class="menu-link">
-              <div class="menu-text d-lg-block d-none">
+              <div class="menu-text d-lg-block ">
+				{% comment %} remove d-none class {% endcomment %}
                 <h6>{{ user.first_name }}</h6>
               </div>
               <div class="menu-img online">
