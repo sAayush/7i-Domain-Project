@@ -1,385 +1,378 @@
 {% extends "base.html" %}
-
-		 {% block content %}
-
-				<!-- BEGIN row -->
-				<div class="row">
-					<!-- BEGIN col-3 -->
-					<div class="col-xl-10">
-						<!-- BEGIN card -->
-						<div class="card mb-3">
-							<!-- BEGIN card-body -->
-							<div class="card-body">
-								<!-- BEGIN title -->
-								<div class="d-flex fw-bold mb-2">
-									<span class="flex-grow-1">Domain Date</span>
+	{% block content %}
+		<!-- BEGIN row -->
+	<div class="row">
+	<!-- BEGIN col-3 -->
+		<div class="container col-xl-10 ">
+		<!-- BEGIN card -->
+			<div class="card mb-3">
+			<!-- BEGIN card-body -->
+				<div class="card-body">
+				<!-- BEGIN title -->
+					<div class="d-flex fw-bold mb-2">
+						<span class="flex-grow-1">Domain Date</span>
+					</div>
+					<div class="row justify-content-center">
+						<div class="form-input">
+							<div class="mb-2">
+								<input type="text" class="form-control form-control-lg" id="date" name="date" placeholder="YYYY-MM-DD" required>
+								<div class="d-flex mt-3">
+									<button type="submit" class="btn btn-outline-theme" onclick="date_info()">Search</button>
 								</div>
-								<div class="row justify-content-center">
-									<div class="col-md-11">
-										<div class="form-input">
-											<div class="mb-3">
-												<label for="date">Enter Date (YYYY-MM-DD):</label>
-												<input type="text" class="form-control form-control-lg" id="date" name="date" placeholder="Search date..." required>
-												<div class="d-flex mt-3">
-													<button type="submit" class="btn btn-outline-theme" onclick="date_info()">Search</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> 
-									<!-- END title -->
-									<div class="card-arrow">
-											<div class="card-arrow-top-left"></div>
-											<div class="card-arrow-top-right"></div>
-											<div class="card-arrow-bottom-left"></div>
-											<div class="card-arrow-bottom-right"></div>
-									</div>
-								</div>
+							</div>
 						</div>
 					</div>
+				</div> 
+				<!-- END title -->
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
 				</div>
+			</div>
+		</div>
+	</div>
 				<!-- BEGIN row -->
 
-				<div class="container">
-                    <div class="row justify-content-end align-items-center mt-5">
-                            <div class="card mb-5">
-                                <div class="card-body">
-                                    <div class="d-flex fw-bold small mb-4">
-                                        <a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-                                    </div>
-                                    <div class="small text-inverse text-opacity-50 text-truncate">
-                                        <div id="domain_Div"></div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">
-                                    <div class="card-arrow-top-left"></div>
-                                    <div class="card-arrow-top-right"></div>
-                                    <div class="card-arrow-bottom-left"></div>
-                                    <div class="card-arrow-bottom-right"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+	<div class="row justify-content-end align-items-center">
+		<div class="card mb-5">
+			<div class="card-body">
+				<div class="d-flex fw-bold small mb-4">
+					<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+				</div>
+				<div class="small text-inverse text-opacity-50 text-truncate">
+					<div id="domain_Div"></div>
+				</div>
+			</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 	
-				 
-                 <div class="container">
-                    <div class="row justify-content-end align-items-center mt-5">
-                            <div class="card mb-5">
-                                <div class="card-body">
-                                    <div class="d-flex fw-bold small mb-3">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-                                    <div class="small text-inverse text-opacity-50 text-truncate">
-                                        <div id="whois_Div"></div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">
-                                    <div class="card-arrow-top-left"></div>
-                                    <div class="card-arrow-top-right"></div>
-                                    <div class="card-arrow-bottom-left"></div>
-                                    <div class="card-arrow-bottom-right"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div class="dnsdumpD"><div>
-											
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+		<div class="card mb-5">
+			<div class="card-body">
+				<div class="d-flex fw-bold small mb-3">
+					<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+				</div>
+				<div class="small text-inverse text-opacity-50 text-truncate">
+					<div id="whois_Div"></div>
+				</div>
+			</div>
+			<div class="card-arrow">
+				<div class="card-arrow-top-left"></div>
+				<div class="card-arrow-top-right"></div>
+				<div class="card-arrow-bottom-left"></div>
+				<div class="card-arrow-bottom-right"></div>
+			</div>
+		</div>
+	</div>
+</div>
 
-			<!-- BEGIN #content -->
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div class="vtotaldiv"><div>
-											
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div class="dnsdumpD"><div>
+							
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="crt_data_div"></div>
-										<div id="CertificateDIV"></div>
-										<div id="Issued_Certificates_DIV"></div>
-                                        <div id="container_div"></div>
-                                       
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
+<!-- BEGIN #content -->
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+		<div class="card mb-5">
+			<div class="card-body">
+				<div class="d-flex fw-bold small mb-4">
+					<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+				</div>
+				<div class="small text-inverse text-opacity-50 text-truncate">
+					<div class="vtotaldiv">
+						<div>	
 						</div>
 					</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
 				</div>
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="crt_data"></div>
-										<div id="TransparencyDiv"></div>
-										<div id="FingerprintsDiv"></div>
-										<div id="Certificate"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div  id="crttable"></div> 
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="crt_data_div"></div>
+						<div id="CertificateDIV"></div>
+						<div id="Issued_Certificates_DIV"></div>
+						<div id="container_div"></div>
+						
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="crt_data"></div>
+						<div id="TransparencyDiv"></div>
+						<div id="FingerprintsDiv"></div>
+						<div id="Certificate"></div>
+					</div>
+				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="issuediv"></div>
-										<div id="ReportDataDiv"></div>
-										<div id="certificates_div"></div>
-                                        <div id="DNSDiv"></div>
-                                        <div id="General_InformationDiv"></div>
-										<div id="opensslhandshakediv"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div  id="crttable"></div> 
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="cms"></div> 
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="issuediv"></div>
+						<div id="ReportDataDiv"></div>
+						<div id="certificates_div"></div>
+						<div id="DNSDiv"></div>
+						<div id="General_InformationDiv"></div>
+						<div id="opensslhandshakediv"></div>
 					</div>
 				</div>
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="waf_Div"></div> 
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
 				</div>
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="buildwit_Div"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="fuzz_Div"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="cms"></div> 
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="waf_Div"></div> 
+					</div>
+				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="buildwit_Div"></div>
+					</div>
+				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="nmap_Div"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="fuzz_Div"></div>
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="wps_div"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="nmap_Div"></div>
 					</div>
 				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<div class="container">
-					<div class="row justify-content-end align-items-center mt-5">
-							<div class="card mb-5">
-								<div class="card-body">
-									<div class="d-flex fw-bold small mb-4">
-										<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-									</div>
-									<div class="small text-inverse text-opacity-50 text-truncate">
-										<div id="result"></div>
-									</div>
-								</div>
-								<div class="card-arrow">
-									<div class="card-arrow-top-left"></div>
-									<div class="card-arrow-top-right"></div>
-									<div class="card-arrow-bottom-left"></div>
-									<div class="card-arrow-bottom-right"></div>
-								</div>
-							</div>
-						</div>
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="wps_div"></div>
 					</div>
 				</div>
-				{% endblock %}
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row justify-content-end align-items-center mt-5">
+			<div class="card mb-5">
+				<div class="card-body">
+					<div class="d-flex fw-bold small mb-4">
+						<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
+					</div>
+					<div class="small text-inverse text-opacity-50 text-truncate">
+						<div id="result"></div>
+					</div>
+				</div>
+				<div class="card-arrow">
+					<div class="card-arrow-top-left"></div>
+					<div class="card-arrow-top-right"></div>
+					<div class="card-arrow-bottom-left"></div>
+					<div class="card-arrow-bottom-right"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

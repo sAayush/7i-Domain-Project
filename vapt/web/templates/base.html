@@ -49,14 +49,14 @@
         <div class="navbar navbar-expand-lg d-none d-lg-flex">
           <!-- Left navigation items -->
           <div class="d-flex align-items-center">
-            <div class="menu-item m-3">
+            <div class="menu-item">
               <a
                 href="{% url 'home' %}"
                 class="menu-link text-decoration-none {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                 <span class="menu-text">Home</span>
               </a>
             </div>
-            <div class="menu-item m-3">
+            <div class="menu-item m-lg-5">
               <a
                 href="{% url 'search_data' %}"
                 class="menu-link text-decoration-none {% if request.resolver_match.url_name == 'search_data' %}active{% endif %}">
@@ -66,8 +66,8 @@
           </div>
 
           <!-- Centered Search Bar -->
-          <form class="d-flex justify-content-center" method="GET" action="{% url 'search_data' %}">
-            <div class="input-group" style="width: 50%">
+          <form class="d-flex justify-content-end" method="GET" action="{% url 'search_data' %}">
+            <div class="input-group">
               <input
                 type="text"
                 name="q"
@@ -85,7 +85,7 @@
         <div class="menu">
           <div class="menu-item dropdown dropdown-mobile-full">
             <a href="#" data-bs-toggle="dropdown" class="menu-link">
-              <div class="menu-text d-lg-block">
+              <div class="menu-text d-lg-block d-none">
                 {% comment %} remove d-none class {% endcomment %}
                 <h6>{{ user.first_name }}</h6>
               </div>
