@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 	{% block content %}
 		<!-- BEGIN row -->
-		<div class="row">
+		<div class="container">
 			<!-- BEGIN col-3 -->
-			<div class="col-xl-10">
+			<div class="row justify-content-end align-items-center">
 				<!-- BEGIN card -->
 				<div class="card mb-3">
 					<!-- BEGIN card-body -->
@@ -28,22 +28,21 @@
 								<option value="revwhois">Reverse Whois</option>
 							</select> {% endcomment %}
 							
-								<div class="mt-3">
-									<button  type="submit" class="btn d-block btn-outline-theme"  onclick="search()" >Search</button>
-								</div>
+							<div class="mt-3">
+								<button  type="submit" class="btn d-block btn-outline-theme"  onclick="search()" >Search</button>
 							</div>
-						</div>			
-							
-						<div class="card-arrow">
-							<div class="card-arrow-top-left"></div>
-							<div class="card-arrow-top-right"></div>
-							<div class="card-arrow-bottom-left"></div>
-							<div class="card-arrow-bottom-right"></div>
 						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 
 		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
@@ -67,91 +66,87 @@
 		</div>
 		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
-					<div class="card mb-5">
-						<div class="card-body">
-							<div class="d-flex fw-bold small mb-4">
-								<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-							</div>
-							<div class="small text-inverse text-opacity-50 text-truncate">
-								<div class="dnsdump"></div>
-							</div>
+				<div class="card mb-5">
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-4">
+							<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
 						</div>
-						<div class="card-arrow">
-							<div class="card-arrow-top-left"></div>
-							<div class="card-arrow-top-right"></div>
-							<div class="card-arrow-bottom-left"></div>
-							<div class="card-arrow-bottom-right"></div>
+						<div class="small text-inverse text-opacity-50 text-truncate">
+							<div class="dnsdump"></div>
 						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
-					<div class="card mb-5">
-						<div class="card-body">
-							<div class="d-flex fw-bold small mb-8">
-								<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-							</div>
-							<div class="small text-inverse text-opacity-50 text-truncate">
-								<div class="vtotal"></div>
-								
-							</div>
+				<div class="card mb-5">
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-8">
+							<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
 						</div>
-						<div class="card-arrow">
-							<div class="card-arrow-top-left"></div>
-							<div class="card-arrow-top-right"></div>
-							<div class="card-arrow-bottom-left"></div>
-							<div class="card-arrow-bottom-right"></div>
+						<div class="small text-inverse text-opacity-50 text-truncate">
+							<div class="vtotal"></div>
+							
 						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
-					<div class="card mb-5">
-						<div class="card-body">
-							<div class="d-flex fw-bold small mb-8">
-								<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-							</div>
-							<div class="small text-inverse text-opacity-50 text-truncate">
-								<div id="crt_data_div_0"></div>
-							</div>
+				<div class="card mb-5">
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-8">
+							<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
 						</div>
-						<div class="card-arrow">
-							<div class="card-arrow-top-left"></div>
-							<div class="card-arrow-top-right"></div>
-							<div class="card-arrow-bottom-left"></div>
-							<div class="card-arrow-bottom-right"></div>
+						<div class="small text-inverse text-opacity-50 text-truncate">
+							<div id="crt_data_div_0"></div>
 						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
-					<div class="card mb-5">
-						<div class="card-body">
-							<div class="d-flex fw-bold small mb-4">
-								<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
-							</div>
-							<div class="small text-inverse text-opacity-50 text-truncate">
-								<div id="issuediv"></div>
-								<div id="ReportDataDiv"></div>
-								<div id="General_InformationDiv"></div>
-								<div id="DNSDiv" ></div>
-								<div id="CertificateDIV"> 
-								</div>
-								<div id="opensslhandshakediv"></div>
-							</div>
+				<div class="card mb-5">
+					<div class="card-body">
+						<div class="d-flex fw-bold small mb-4">
+							<a href="#" data-toggle="card-expand" class="text-inverse text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
 						</div>
-						<div class="card-arrow">
-							<div class="card-arrow-top-left"></div>
-							<div class="card-arrow-top-right"></div>
-							<div class="card-arrow-bottom-left"></div>
-							<div class="card-arrow-bottom-right"></div>
+						<div class="small text-inverse text-opacity-50 text-truncate">
+							<div id="issuediv"></div>
+							<div id="ReportDataDiv"></div>
+							<div id="General_InformationDiv"></div>
+							<div id="DNSDiv" ></div>
+							<div id="CertificateDIV"> 
+							</div>
+							<div id="opensslhandshakediv"></div>
 						</div>
+					</div>
+					<div class="card-arrow">
+						<div class="card-arrow-top-left"></div>
+						<div class="card-arrow-top-right"></div>
+						<div class="card-arrow-bottom-left"></div>
+						<div class="card-arrow-bottom-right"></div>
 					</div>
 				</div>
 			</div>
@@ -174,7 +169,6 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -195,7 +189,6 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -216,7 +209,6 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -277,7 +269,6 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -298,10 +289,9 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
-		{% comment %} <div class="container">
+		<div class="container">
 			<div class="row justify-content-end align-items-center mt-5">
 					<div class="card mb-5">
 						<div class="card-body">
@@ -320,9 +310,8 @@
 							<div class="card-arrow-bottom-right"></div>
 						</div>
 					</div>
-				</div>
 			</div>
-		</div> {% endcomment %}
+		</div>
 
 		<div id="myModal" class="modal">
 
