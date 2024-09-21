@@ -106,20 +106,22 @@
       <div id="sidebar" class="app-sidebar d-lg-none">
         <!-- Menu items -->
         <div class="menu">
-          <div class="menu-item">
+          <h2 class="menu-title m-3">Menu</h2>
+          <div class='my-divider'>
+          </div>
+          <div class="menu-item m-2">
             <a href="{% url 'home' %}" class="menu-link">
-              <span class="menu-text">Home</span>
+              <span class="menu-text m-2">Home</span>
             </a>
           </div>
-          <div class="menu-item">
+          <div class="menu-item m-2">
             <a href="{% url 'search_data' %}" class="menu-link">
-              <span class="menu-text">Domain History</span>
+              <span class="menu-text m-2">Domain History</span>
             </a>
           </div>
         </div>
       </div>
       <!-- END sidebar for mobile -->
-
       <!-- BEGIN mobile-sidebar-backdrop -->
       <button
         class="app-sidebar-mobile-backdrop"
