@@ -37,7 +37,6 @@
         <div class="brand">
           <a href="#" class="brand-logo d-flex align-items-center justify-content-center">
             <span style="height: 1.625rem">
-              {% comment %} remove class and add inline css {% endcomment %}
               <img src="{% static 'img/logo/logo.png' %}" alt="logo" />
             </span>
           </a>
@@ -52,14 +51,14 @@
             <div class="menu-item">
               <a
                 href="{% url 'home' %}"
-                class="menu-link text-decoration-none {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                class="menu-link text-decoration-none active">
                 <span class="menu-text">Home</span>
               </a>
             </div>
             <div class="menu-item m-lg-5">
               <a
                 href="{% url 'search_data' %}"
-                class="menu-link text-decoration-none {% if request.resolver_match.url_name == 'search_data' %}active{% endif %}">
+                class="menu-link text-decoration-none active">
                 <span class="menu-text">Domain History</span>
               </a>
             </div>
@@ -86,7 +85,6 @@
           <div class="menu-item dropdown dropdown-mobile-full">
             <a href="#" data-bs-toggle="dropdown" class="menu-link">
               <div class="menu-text d-lg-block d-none">
-                {% comment %} remove d-none class {% endcomment %}
                 <h6>{{ user.first_name }}</h6>
               </div>
               <div class="menu-img online">
@@ -109,14 +107,16 @@
           <h2 class="menu-title m-3">Menu</h2>
           <div class='my-divider'>
           </div>
-          <div class="menu-item m-2">
-            <a href="{% url 'home' %}" class="menu-link">
-              <span class="menu-text m-2">Home</span>
+          <div class="menu-text m-3">
+            <a href="{% url 'home' %}" class="menu-link text-decoration-none">
+              <i class="fa fa-home"></i>
+              <span class="menu-link active m-2">Home</span>
             </a>
           </div>
-          <div class="menu-item m-2">
-            <a href="{% url 'search_data' %}" class="menu-link">
-              <span class="menu-text m-2">Domain History</span>
+          <div class="menu-item m-3">
+            <a href="{% url 'search_data' %}" class="menu-link text-decoration-none">
+              <i class="fa fa-history"></i>
+              <span class="menu-text text-decoration-none active m-2">Domain History</span>
             </a>
           </div>
         </div>
