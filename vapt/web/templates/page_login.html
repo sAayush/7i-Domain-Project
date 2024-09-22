@@ -3,7 +3,7 @@
   {% load static %}
   <head>
     <meta charset="utf-8" />
-    <title>HUD | Login</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -51,9 +51,9 @@
               Don't have an account yet? <a href="{% url 'register' %}">Sign up</a>.
             </div>
           </form>
-          <div class="form-group">
+          <div class="form-group message-container">
             {% for message in messages %}
-            <div class="alert alert-danger" role="alert"> {{message}} </div>
+            <div class="alert alert-dark" role="alert"> {{message}} </div>
             {% endfor %}
           </div>
         </div>
@@ -282,8 +282,10 @@
     <!-- END #app -->
 
     <!-- ================== BEGIN core-js ================== -->
+    <script src="{% static 'webfonts/script.js' %}"></script>
     <script src="{% static 'js/vendor.min.js' %}"></script>
     <script src="{% static 'js/app.min.js' %}"></script>
+
     <!-- ================== END core-js ================== -->
   </body>
 </html>
