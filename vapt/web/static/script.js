@@ -2529,6 +2529,7 @@ async function search() {
       wafscan(),
       fadeInContainers(),
     ])
+
   } catch (error) {
     console.error("Error occurred during search:", error)
   }
