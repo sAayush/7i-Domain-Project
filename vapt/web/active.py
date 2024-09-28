@@ -5,12 +5,14 @@ from django.shortcuts import render ,redirect
 from asgiref.sync import sync_to_async,async_to_sync
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
+from xhtml2pdf import pisa
 from datetime import datetime
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 
 # importing custom libraries
@@ -609,3 +611,37 @@ def search_data(request):
 @login_required(login_url='login_user')
 def settings(request):
     return render(request, 'settings.html')
+
+@login_required
+def generate_pdf(request):
+    # Get the domain name from the request
+    domain = request.GET.get('domain', '')
+
+    context = {
+        'domain': domain,
+        'whois_data': "Who is data",
+        'dns_data': "DNS data",
+        'crt_data': "CRT data",
+        'ssl_data': "SSL data",
+        'cetid_data': "CETID data",
+        'crtid_data': "CRTID data",
+        'virustotal_data': "Virus Total data",
+        'buildwith_data': "Buildwith data",
+        'cms_data': "CMS data",
+        'fuzz_data': "Fuzz data",
+        'nmap_data': "Nmap data",
+        'waf_data': "WAF data",
+        'wps_data': "WPS data",
+    }
+
+    html = render_to_string('pdf_template.html', context)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{domain}_report.pdf"'
+
+    # Try generating the PDF
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    
+    if pisa_status.err:
+        return HttpResponse('Error generating PDF', status=500)
+    
+    return response

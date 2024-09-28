@@ -25,5 +25,6 @@ urlpatterns = [
     path("cetid/", active.cetid, name="cetid"),
     path("pcheck/", active.pcheck, name="pcheck"), # to check the above process status
     path("pkill/", active.pkill, name="pkill"), # to kill the above process
+    path('generate_pdf/', active.generate_pdf, name='generate_pdf'), # to generate the pdf
  ]
   

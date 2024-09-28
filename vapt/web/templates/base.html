@@ -93,7 +93,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" href="{% url 'logout' %}">LOGOUT</a>
-              <a class="dropdown-item" href="{% url 'settings' %}">SETTINGS</a>
+              {% comment %} <a class="dropdown-item" href="{% url 'settings' %}">SETTINGS</a> {% endcomment %}
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
         class="app-sidebar-mobile-backdrop"
         data-toggle-target=".app"
         data-toggle-class="app-sidebar-mobile-toggled"></button>
-      <!-- END mobile-sidebar-backdrop -->
+      <!-- END mobile-sid ebar-backdrop -->
 
       <!-- BEGIN #content -->
       <div id="content" class="app-content">
@@ -138,7 +138,9 @@
       <!-- END #content -->
     </div>
     <!-- END #app -->
-
+    
+   
+   
     <!-- ================== BEGIN core-js ================== -->
     <script src="{% static 'js/vendor.min.js' %}"></script>
     <script src="{% static 'js/app.min.js' %}"></script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Domain Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Domain: {{ domain }}</h1>
+
+    <h2>Whois Data</h2>
+    <p>{{ whois_data }}</p>
+
+    <h2>DNS Data</h2>
+    <p>{{ dns_data }}</p>
+
+    <h2>Certificate Transparency Data</h2>
+    <p>{{ crt_data }}</p>
+    
+    <h2>SSL Certificate Data</h2>
+    <p>{{ ssl_data }}</p>
+
+    <h2>CET Id data</h2>
+    <p>{{ cetid_data }}</p>
+
+    <h2>Reverse DNS Data</h2>
+    <p>{{ crtid_data }}</p>
+
+    <h2>Virus total data</h2>
+    <p>{{virustotal_data }}</p>
+
+    <h2>Build Width Data</h2>
+    <p>{{ buildwith_data }}</p>
+
+    <h2>CMS Scan Data</h2>
+    <p>{{ cms_data }}</p>
+
+    <h2>Nmap Scan Results</h2>
+    <p>{{ nmap_data }}</p>
+
+    <h2>Fuzz Scan Results</h2>
+    <p>{{ fuzz_data }}</p>
+
+    <h2>Nmap Scan Data</h2>
+    <p>{{ nmap_data }}</p>
+
+    <h2>Web Application Firewall Scan Data</h2>
+    <p>{{ waf_data }}</p>
+
+    <h2>WPS Scan Data</h2>
+    <p>{{ wps_data }}</p>
+
+    <!-- Add additional sections here as needed -->
+</body>
+</html>

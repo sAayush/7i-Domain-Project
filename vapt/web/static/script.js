@@ -2512,7 +2512,37 @@ async function date_info() {
   }
 }
 
+function downloadPDF() {
+  const domain = document.getElementById('domain').value;  // Get the domain or other data dynamically
 
+  fetch(`/generate_pdf/?domain=${domain}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/pdf',
+      }
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.blob();  // Convert response to Blob object
+      }
+      throw new Error('Error generating PDF');
+  })
+  .then(blob => {
+      // Create a download link
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = `${domain}_report.pdf`;  // Define the filename
+      link.click();  // Trigger download
+  })
+  .catch(error => {
+      console.error('Error downloading PDF:', error);
+      alert('Failed to download PDF');
+  });
+}
+
+function printpdf(){
+  window.print();
+}
 // fucntion for search
 async function search() {
   try {
