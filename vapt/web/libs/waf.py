@@ -3,6 +3,7 @@ import time
 import requests
 import re
 import json
+import os
 
 class waf:
 	def __init__(self,domain):

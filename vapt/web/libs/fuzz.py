@@ -6,7 +6,7 @@ import json
 
 class fuzzer:
     def __init__(self,domain,wordlist='web/wordlist/wordlist.txt'):
-        self.domain = domain
+        self.domain = re.sub(r'^https?://', '', domain)
         self.url = self.urlcheck()
         self.wordlist = wordlist
         self.output = list()
@@ -46,7 +46,9 @@ class fuzzer:
         self.proc.start()
     
     def code(self):
-        return self.proc.scode()
+        if self.proc:
+            return self.proc.scode()
+        return None # Return None if the process never started
     
     def result(self):
         output = self.proc.result()

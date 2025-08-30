@@ -8,7 +8,7 @@ from django.views.decorators.http import require_POST
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
 from xhtml2pdf import pisa
-from datetime import datetime
+from django.utils import timezone
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
@@ -114,7 +114,7 @@ def whois(request):
             data = w.result()
             # print(data)
             # Do something with the 'domain' variable
-            whoisInfo.objects.create(user=request.user,domain=domain, whois=data  ,created_at=datetime.now().date() )
+            whoisInfo.objects.create(user=request.user,domain=domain, whois=data  ,created_at=timezone.now().date() )
 
             # Return a JSON response
             return HttpResponse(json.dumps({'whois':data}), content_type='application/json')
@@ -142,7 +142,7 @@ def dnsdump(request):
             dns = dnsdumpster.dumpster(domain)
             dns.scan()
             data = dns.result()
-            dnsdumpsterInfo.objects.create(user=request.user,domain=domain, dnsdumpster=data  ,created_at=datetime.now().date() )
+            dnsdumpsterInfo.objects.create(user=request.user,domain=domain, dnsdumpster=data  ,created_at=timezone.now().date() )
             
             return HttpResponse(json.dumps({'dnsdumpster':data}), content_type='application/json')
 
@@ -169,7 +169,7 @@ def crt_info(request):
             crt_data = crt.certificate(domain)
             crt_data.get()
             cmrt = crt_data.result()
-            CRTInfo.objects.create(user=request.user,domain=domain, crtdata=cmrt  ,created_at=datetime.now().date() )
+            CRTInfo.objects.create(user=request.user,domain=domain, crtdata=cmrt  ,created_at=timezone.now().date() )
 
             # Return a JSON response
             return HttpResponse(json.dumps({'crt_data':cmrt}), content_type='application/json')
@@ -194,7 +194,7 @@ def ssl_info(request):
             crt_data = sslcheck.Certificate(domain)
             crt_data.get()
             cmrt = crt_data.result()
-            SSLInfo.objects.create(user=request.user,domain=domain, SSLdata=cmrt  ,created_at=datetime.now().date())
+            SSLInfo.objects.create(user=request.user,domain=domain, SSLdata=cmrt  ,created_at=timezone.now().date())
             # Return a JSON response
             return HttpResponse(json.dumps({'crt_data':cmrt}), content_type='application/json')
 
@@ -219,7 +219,7 @@ def cetid(request):
             crt_data = cetidd.CrtShInfo(id)
             crt_data.get()
             cmrt = crt_data.result()
-            CETID_data.objects.create(user=request.user,domain=id, crtidata=cmrt  ,created_at=datetime.now().date())
+            CETID_data.objects.create(user=request.user,domain=id, crtidata=cmrt  ,created_at=timezone.now().date())
             # Return a JSON response
             return HttpResponse(json.dumps({'crt_data':cmrt}), content_type='application/json')
 
@@ -243,7 +243,7 @@ def crtidnum(request):
             crt_data = crtidnumberk.CrtShInfo(id)
             crt_data.get()
             cmrt = crt_data.result()
-            crti_Info.objects.create(user=request.user,domain=id, cetiddata=cmrt  ,created_at=datetime.now().date())
+            crti_Info.objects.create(user=request.user,domain=id, cetiddata=cmrt  ,created_at=timezone.now().date())
             # Return a JSON response
             return HttpResponse(json.dumps({'crt_data':cmrt}), content_type='application/json')
 
@@ -270,7 +270,7 @@ async def vrtotal(request):
             
             dat = await vt.result()
             
-            scan = VirusTotalScan(user=request.user,domain=domain, vir_result=dat ,created_at=datetime.now().date())
+            scan = VirusTotalScan(user=request.user,domain=domain, vir_result=dat ,created_at=timezone.now().date())
             await sync_to_async(scan.save)()
             return HttpResponse(json.dumps({'virustotal':dat}), content_type='application/json')
 
@@ -297,7 +297,7 @@ def buildwithscan(request):
             domain = data.get('domain', '')
             res = buildwith(domain)
             buildwith_data = res.json
-            buildwithinfo.objects.create(user=request.user,domain=domain, buildwith=buildwith_data,created_at=datetime.now().date() )
+            buildwithinfo.objects.create(user=request.user,domain=domain, buildwith=buildwith_data,created_at=timezone.now().date() )
             return HttpResponse(json.dumps({'buildwith':res.json}), content_type='application/json')
         except json.JSONDecodeError as e:
             return HttpResponse(json.dumps({'error': 'Invalid JSON format'}), content_type='application/json')
@@ -324,7 +324,7 @@ def cmsscan(request):
                 if proc.result() == False:
                     pass
                 else:
-                    cmsscaninfo.objects.create(user=request.user,domain=domain, cmss=proc.result()  ,created_at=datetime.now().date() )
+                    cmsscaninfo.objects.create(user=request.user,domain=domain, cmss=proc.result()  ,created_at=timezone.now().date() )
                     break
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
         except json.JSONDecodeError as e:
@@ -349,7 +349,7 @@ def cmsscan(request):
 #             scanner=dnsvie(domain,scan)
 #             result = scanner.result
 #             print(result)
-#             dnsviewdata.objects.create(user=request.user,domain=domain, dnsview_result=result ,created_at=datetime.now().date())
+#             dnsviewdata.objects.create(user=request.user,domain=domain, dnsview_result=result ,created_at=timezone.now().date())
 #             print(result)
 #             # Return a JSON response
 #             return HttpResponse(json.dumps({'crt_data':result}), content_type='application/json')
@@ -384,7 +384,7 @@ def fuzz(request):
                 if proc.result() == False:
                     pass
                 else:
-                    fuzzerinfo.objects.create(user=request.user,domain=domain, fuzzz=proc.result() ,created_at=datetime.now().date() )
+                    fuzzerinfo.objects.create(user=request.user,domain=domain, fuzzz=proc.result() ,created_at=timezone.now().date() )
                     break
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
             
@@ -414,7 +414,7 @@ def nmapscan(request):
                 if proc.result() == False:
                     pass
                 else:
-                    nmapinfo.objects.create(user=request.user,domain=domain, nmape=proc.result() ,created_at=datetime.now().date() )
+                    nmapinfo.objects.create(user=request.user,domain=domain, nmape=proc.result() ,created_at=timezone.now().date() )
                     break
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
 
@@ -444,7 +444,7 @@ def wafscan(request):
                 if proc.result() == False:
                     pass
                 else:
-                    wafinfo.objects.create(user=request.user,domain=domain, wafee=proc.result() ,created_at=datetime.now().date() )
+                    wafinfo.objects.create(user=request.user,domain=domain, wafee=proc.result() ,created_at=timezone.now().date() )
                     break
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
         except json.JSONDecodeError as e:
@@ -474,7 +474,7 @@ def wpscanning(request):
                     pass
                 else:
                     print(proc.result())
-                    wpsinfo.objects.create(user=request.user,domain=domain, wpss=proc.result() ,created_at=datetime.now().date() )
+                    wpsinfo.objects.create(user=request.user,domain=domain, wpss=proc.result() ,created_at=timezone.now().date() )
                     break
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
         except json.JSONDecodeError as e:
@@ -535,8 +535,8 @@ def search_data(request):
             date_str = data.get('date', '')
             print(date_str)
 
-            search_date = datetime.strptime(date_str, '%Y-%m-%d').date()
-           
+            search_date = timezone.datetime.strptime(date_str, '%Y-%m-%d').date()
+
 
             dns_info_list = dnsviewdata.objects.filter(user=request.user, created_at=search_date)
             CRT_Info = CRTInfo.objects.filter(user=request.user, created_at=search_date)
