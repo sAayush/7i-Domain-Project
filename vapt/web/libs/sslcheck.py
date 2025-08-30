@@ -16,7 +16,10 @@ class Certificate:
 
         # Issue
         issues = soup.find('div', {"class": "v-alert__wrapper"})
-        data["issue"] = issues.text.strip()
+        if issues:
+            data["issue"] = issues.text.strip()
+        else:
+            data["issue"] = "Not found"
 
         # Report
         report = []
