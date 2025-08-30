@@ -311,26 +311,31 @@ def buildwithscan(request):
 def cmsscan(request):
     if request.method == "POST":
         try:
-            # Use request.body for JSON data
             data = json.loads(request.body.decode('utf-8'))
-
-            # Access the 'domain' key from the JSON data
             domain = data.get('domain', '')
+
             proc = cmsfind(domain)
             proc.start()
+
+            # ADD THIS CRITICAL FIX
+            if proc.proc is None:
+                return HttpResponse(json.dumps({'error': 'Failed to start CMSeek. URL may be invalid or unreachable.'}), content_type='application/json', status=400)
+
             code = proc.code()
             Process_Stack[code] = proc
+
             while True:
-                if proc.result() == False:
-                    pass
-                else:
-                    cmsscaninfo.objects.create(user=request.user,domain=domain, cmss=proc.result()  ,created_at=timezone.now().date() )
+                result_data = proc.result()
+                if result_data != False:
+                    cmsscaninfo.objects.create(user=request.user,domain=domain, cmss=result_data, created_at=timezone.now()) # Also fixed datetime here
                     break
+
             return HttpResponse(json.dumps({'result':'working','code':code}), content_type='application/json')
+
         except json.JSONDecodeError as e:
-            return HttpResponse(json.dumps({'error': 'Invalid JSON format'}), content_type='application/json')
+            return HttpResponse(json.dumps({'error': 'Invalid JSON format'}), content_type='application/json', status=400)
     else:
-        return HttpResponse(json.dumps({'error': 'Not POST'}), content_type='application/json')
+        return HttpResponse(json.dumps({'error': 'Not POST'}), content_type='application/json', status=405)
             
 # @login_required(login_url='login_user')
 # @csrf_exempt
