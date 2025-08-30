@@ -10,81 +10,78 @@ class Certificate:
         self.scan = False
     
     def get(self):
-        res = requests.get(self.url + self.domain+"/443")
-        soup = BeautifulSoup(res.content.decode('utf-8'), 'html.parser')
+        try:
+            res = requests.get(self.url + self.domain + "/443", timeout=10)
+            res.raise_for_status() # Raise an exception for bad status codes like 404 or 500
+            soup = BeautifulSoup(res.content.decode('utf-8'), 'html.parser')
+        except requests.RequestException as e:
+            print(f"Failed to retrieve SSL data for {self.domain}: {e}")
+            self.scan = True # Mark as scanned to prevent 'not done' error
+            self.store.append({"error": f"Could not connect to SSL checker for {self.domain}"})
+            return
+
         data = {}
 
         # Issue
         issues = soup.find('div', {"class": "v-alert__wrapper"})
-        if issues:
-            data["issue"] = issues.text.strip()
-        else:
-            data["issue"] = "Not found"
+        data["issue"] = issues.text.strip() if issues else "No issues reported."
 
-        # Report
+        # Main content div
+        main_content = soup.find('div', {"class": "flex xs12 sm10 offset-sm1"})
+        if not main_content:
+            print(f"Could not find main content block for {self.domain}")
+            self.scan = True
+            self.store.append({"error": "Failed to parse SSL checker page structure."})
+            return
+
+        # All tables within the main content
+        tables = main_content.find_all("table")
+
+        # Report (Table 1)
         report = []
-        ssl = soup.find('div', {"class": "flex xs12 sm10 offset-sm1"})
-        table = ssl.find_all("table")[0]
-        for ssl_info in table.find_all("tr"):
-            cells = ssl_info.find_all("td")
-            report.append({
-                "Key": cells[0].text.strip(),
-                "Icon": ssl_info.find("i").text,
-                "Value": cells[1].text.replace('done', '').strip()
-            })
+        if len(tables) > 0:
+            for ssl_info in tables[0].find_all("tr"):
+                cells = ssl_info.find_all("td")
+                if len(cells) > 1 and ssl_info.find("i"):
+                    report.append({
+                        "Key": cells[0].text.strip(),
+                        "Icon": ssl_info.find("i").text,
+                        "Value": cells[1].text.replace('done', '').strip()
+                    })
         data["Report"] = report
 
-        # DNS Information
+        # DNS Info (Table 2)
         dns_info = []
-        table = soup.find_all("table")[1]
-        for ssl_info in table.find_all("tr"):
-            cells = ssl_info.find_all("td")
-            dns_info.append({
-                "Key": cells[0].text.strip(),
-                "Icon": ssl_info.find("span").text,
-                "Value": cells[1].text.replace('done', '').strip()
-            })
-        data["DNS"] = dns_info
-
-        # General Information
-        general_info = []
-        table = soup.find_all("table")[2]
-        for ssl_info in table.find_all("tr"):
-            cells = ssl_info.find_all("td")
-            general_info.append({
-                "Key": cells[0].text.strip(),
-                "Icon": ssl_info.find("span").text,
-                "Value": cells[1].text.replace('done', '').strip()
-            })
-        data["General_Information"] = general_info
-
-        # Chain Information
-        # chain_info = []
-        # chain_heading = soup.find_all('h4', {"class": "pt-3 pb-3"})[0].text.strip()
-        
-        # data[chain_heading] = chain_info
-
-        # Certificates
-        certificate_info = {}
-        tables = soup.find_all("table")
-        for i, issue in enumerate(soup.find_all('h4', {"class": "pt-3 pb-3"}), start=1):
-            cert_info = []
-            if len(tables) > i:
-                table = tables[i]
-                for ssl_info in table.find_all("tr"):
-                    cells = ssl_info.find_all("td")
-                    cert_info.append({
+        if len(tables) > 1:
+            for ssl_info in tables[1].find_all("tr"):
+                cells = ssl_info.find_all("td")
+                if len(cells) > 1 and ssl_info.find("span"):
+                    dns_info.append({
                         "Key": cells[0].text.strip(),
                         "Icon": ssl_info.find("span").text,
                         "Value": cells[1].text.replace('done', '').strip()
                     })
-            certificate_info[issue.text.strip()] = cert_info
+        data["DNS"] = dns_info
 
-        data["Certificates"] = certificate_info
-
+        # General Info (Table 3)
+        general_info = []
+        if len(tables) > 2:
+            for ssl_info in tables[2].find_all("tr"):
+                cells = ssl_info.find_all("td")
+                if len(cells) > 1 and ssl_info.find("span"):
+                    general_info.append({
+                        "Key": cells[0].text.strip(),
+                        "Icon": ssl_info.find("span").text,
+                        "Value": cells[1].text.replace('done', '').strip()
+                    })
+        data["General_Information"] = general_info
+        
         # OpenSSL Handshake
         openssl = soup.find('div', {'class': 'pre-wrapper'})
-        data["OpenSSL_Handshake"] = {"OpenSSL_Handshake": openssl.find("pre").text}
+        if openssl and openssl.find("pre"):
+            data["OpenSSL_Handshake"] = {"OpenSSL_Handshake": openssl.find("pre").text}
+        else:
+            data["OpenSSL_Handshake"] = {"OpenSSL_Handshake": "Not found."}
         
         self.store.append(data)
         self.scan = True

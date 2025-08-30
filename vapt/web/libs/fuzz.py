@@ -13,11 +13,33 @@ class fuzzer:
         self.proc = None
 
     def urlcheck(self):
-        url = "http://" + self.domain
-        res = requests.get(url)
-        return res.url
+        """
+        Tries to connect to the domain using HTTPS first, then falls back to HTTP.
+        Returns the valid URL or None if unreachable.
+        """
+        try:
+            url = "https://" + self.domain
+            res = requests.get(url, timeout=5, allow_redirects=True)
+            if res.status_code < 400:
+                return res.url
+        except requests.RequestException:
+            pass # Ignore connection error, try HTTP next
+
+        try:
+            url = "http://" + self.domain
+            res = requests.get(url, timeout=5, allow_redirects=True)
+            if res.status_code < 400:
+                return res.url
+        except requests.RequestException as e:
+            print(f"Error: Could not connect to {self.domain}. {e}")
+            return None # Return None if both fail
     
     def start(self):
+        # Only start if urlcheck was successful
+        if not self.url:
+            print("Cannot start fuzzing, URL is invalid or unreachable.")
+            return
+
         command = f"wfuzz -u {self.url}/FUZZ -w {self.wordlist} --sc 200"
         process = runcommand.runcommand(command,'fuzz')
         self.proc = process

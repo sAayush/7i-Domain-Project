@@ -8,16 +8,44 @@ class waf:
 	def __init__(self,domain):
 		self.domain = domain
 		self.url = self.urlcheck()
-		self.command = f'wafw00f {self.url} -o web/waf/{self.domain}.txt'
+		self.output_dir = "web/waf"
+		self.output_file = os.path.join(self.output_dir, f"{self.domain}.txt")
+		self.command = None # Will be set in start()
 		self.process = None
 		
 	
 	def urlcheck(self):
-		url = "http://"+self.domain
-		res = requests.get(url)
-		return res.url
+		"""
+		Tries to connect to the domain using HTTPS first, then falls back to HTTP.
+		Returns the valid URL or None if unreachable.
+		"""
+		try:
+			url = "https://" + self.domain
+			res = requests.get(url, timeout=5, allow_redirects=True)
+			if res.status_code < 400:
+				return res.url
+		except requests.RequestException:
+			pass
+
+		try:
+			url = "http://" + self.domain
+			res = requests.get(url, timeout=5, allow_redirects=True)
+			if res.status_code < 400:
+				return res.url
+		except requests.RequestException as e:
+			print(f"Error: Could not connect to {self.domain}. {e}")
+			return None
+
 
 	def start(self):
+		if not self.url:
+			print("Cannot start WAF scan, URL is invalid or unreachable.")
+			return
+
+		# Ensure the output directory exists
+		os.makedirs(self.output_dir, exist_ok=True)
+
+		self.command = f'wafw00f {self.url} -o {self.output_file}'
 		self.process = runcommand.runcommand(self.command,"waf")
 		self.process.start()
 

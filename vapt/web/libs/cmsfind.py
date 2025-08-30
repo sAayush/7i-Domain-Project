@@ -14,16 +14,36 @@ class cmsfind:
         self.proc = None
 
     def urlcheck(self):
-        url = "http://"+self.domain
-        res = requests.get(url)
-        return res.url
+        """
+        Tries to connect to the domain using HTTPS first, then falls back to HTTP.
+        Returns the valid URL or None if unreachable.
+        """
+        try:
+            url = "https://" + self.domain
+            res = requests.get(url, timeout=5, allow_redirects=True)
+            if res.status_code < 400:
+                return res.url
+        except requests.RequestException:
+            pass
+
+        try:
+            url = "http://" + self.domain
+            res = requests.get(url, timeout=5, allow_redirects=True)
+            if res.status_code < 400:
+                return res.url
+        except requests.RequestException as e:
+            print(f"Error: Could not connect to {self.domain}. {e}")
+            return None
     
     def start(self):
+        if not self.url:
+            print("Cannot start CMSeek, URL is invalid or unreachable.")
+            return
+
         command = f"cmseek -u {self.url} --user-agent 'Mozilla 5.0' --batch -o"
         process = runcommand.runcommand(command,"cms")
         self.proc = process
         self.proc.start()
-        print(self.code())
     
     def code(self):
         return self.proc.scode()
